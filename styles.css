@@ -30,7 +30,10 @@ button { font: inherit; border: 0; padding: 0; cursor: pointer; background: none
    ============================================================ */
 .hero {
   position: relative;
-  height: 870px;            /* fixed, as in the mockup — content does not re-centre to taller windows */
+  /* fills the window and centres in it, but only between 760px (content needs it) and 900px —
+     taller windows don't stretch it any further (mockup height is 870) */
+  --hero-h: clamp(760px, 100svh, 900px);
+  height: var(--hero-h);
   display: flex;
   flex-direction: column;
   overflow-x: clip;         /* clip sideways only: rings and widgets continue below the section */
@@ -54,7 +57,7 @@ button { font: inherit; border: 0; padding: 0; cursor: pointer; background: none
    simply uncovers it symmetrically; the logo rides out with the left edge. */
 .island {
   --iw: min(928px, 100vw - 32px);
-  --drop: 435px;            /* orbit centre (488) − island centre at rest (16 + 74/2) */
+  --drop: calc(var(--hero-h) / 2);   /* orbit centre (53 + H/2) − island centre at rest (16 + 74/2) */
   /* the visible wordmark is 117.73px wide, sitting 13.615px inside the 175px logo box:
      the starting pill hugs the wordmark with equal gaps on both sides */
   --pill: calc(117.73px + 2 * (16px + 13.615px));
