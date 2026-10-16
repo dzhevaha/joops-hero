@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joops.ai — Every ad makes the next one better</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Code:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=20" />
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <section class="hero" id="hero">
+
+    <!-- ============ HEADER ============ -->
+    <header class="header">
+      <div class="island">
+       <div class="island__inner">
+        <a class="logo" href="#" aria-label="joops.ai home"><img src="assets/logo.svg" alt="joops.ai" width="118" height="33" /></a>
+        <nav class="nav">
+          <a href="#">Product</a>
+          <a href="#">How it works</a>
+          <a href="#">Pricing</a>
+          <a href="#">Company</a>
+        </nav>
+        <div class="island__actions">
+          <button class="icon-btn icon-btn--user" aria-label="Account">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M9 1.303C11.291 1.303 13.149 3.161 13.149 5.452C13.149 7.743 11.291 9.600 9 9.600C6.709 9.600 4.851 7.743 4.851 5.452C4.851 3.161 6.709 1.303 9 1.303Z" stroke="#2B363E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -0.6)"/>
+              <path d="M9 9.6C5.928 9.6 3.246 11.269 1.811 13.748C3.246 16.228 5.928 17.897 9 17.897C12.072 17.897 14.754 16.228 16.189 13.748C14.754 11.269 12.072 9.6 9 9.6Z" stroke="#2B363E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -0.6)"/>
+            </svg>
+          </button>
+          <a class="btn btn--primary btn--header" href="#">Get ad free</a>
+          <button class="icon-btn icon-btn--menu" aria-label="Menu"><img src="assets/kebab.svg" alt="" width="4.2" height="18.2" /></button>
+        </div>
+       </div>
+      </div>
+    </header>
+
+    <!-- ============ BODY: copy + orbit stage ============ -->
+    <div class="hero__body">
+      <div class="intro">
+        <span class="badge"><span class="badge__text">From 100 ads a month to 5,000<br class="m-only" /> — without adding headcount.</span></span>
+        <h1 class="headline" aria-label="Every ad makes the next one better.">
+          <span class="w" aria-hidden="true"><span style="--i:0">Every</span></span>
+          <span class="w" aria-hidden="true"><span style="--i:1">ad</span></span>
+          <span class="w" aria-hidden="true"><span style="--i:2">makes</span></span>
+          <span class="w" aria-hidden="true"><span style="--i:3">the</span></span>
+          <span class="w" aria-hidden="true"><span style="--i:4">next</span></span>
+          <span class="w" aria-hidden="true"><span style="--i:5">one</span></span>
+          <span class="w" aria-hidden="true"><span style="--i:6">better.</span></span>
+        </h1>
+        <p class="lede">Joops builds from your performance data, learns from every result, and never starts from a blank page.</p>
+        <div class="actions">
+          <div class="actions__row">
+            <a class="btn btn--primary btn--cta" href="#" style="--i:0">Get your first ad free</a>
+            <a class="btn btn--ghost btn--cta" href="#" style="--i:1">See how it works</a>
+          </div>
+          <p class="assure"><img src="assets/info.svg?v=2" alt="" width="12" height="12" /> No credit card required</p>
+        </div>
+      </div>
+
+      <!-- orbit stage: (0,0) = orbit centre. Geometry is driven by script.js -->
+      <div class="stage" aria-hidden="true">
+        <div class="stage__zoom" id="stage">
+          <!-- Every moving part is its own layer: rings rotate on the GPU via CSS transforms,
+               so only the trail repaints per frame (one big SVG used to repaint every dash, every frame). -->
+          <svg class="lyr" id="lyrOuter" fill="none" aria-hidden="true">
+            <circle id="ringOuter" r="520" stroke="#9AB6CC" stroke-width="1" pathLength="1" />
+          </svg>
+          <div class="lyr lyr--spin" id="lyrMid">
+            <svg fill="none" aria-hidden="true">
+              <defs><mask id="maskMid" maskUnits="userSpaceOnUse"><circle id="maskMidC" r="420" stroke="#fff" stroke-width="8" pathLength="1" /></mask></defs>
+              <g mask="url(#maskMid)"><circle id="ringMid" r="420" stroke="#9AB6CC" stroke-width="1" stroke-dasharray="2 2" /></g>
+            </svg>
+          </div>
+          <div class="lyr lyr--spin" id="lyrIn">
+            <svg fill="none" aria-hidden="true">
+              <defs><mask id="maskIn" maskUnits="userSpaceOnUse"><circle id="maskInC" r="320" stroke="#fff" stroke-width="8" pathLength="1" /></mask></defs>
+              <g mask="url(#maskIn)"><circle id="ringIn" r="320" stroke="#9AB6CC" stroke-width="1" stroke-dasharray="2 2" opacity="0.5" /></g>
+            </svg>
+          </div>
+          <!-- the informer's trail: a 10px arc of its ring -->
+          <svg class="lyr" id="lyrTrail" fill="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="trailGrad" gradientUnits="userSpaceOnUse" x1="500" y1="-96.5" x2="559.44" y2="-54.5">
+                <stop stop-color="#1E2830" />
+                <stop offset="1" stop-color="#A1BBD0" />
+              </linearGradient>
+            </defs>
+            <path id="trail" d="" stroke="url(#trailGrad)" stroke-width="10" stroke-linecap="round" />
+          </svg>
+          <!-- orbiting dots (flat gradient, as in Figma) -->
+          <span class="dot" id="dotA"></span>
+          <span class="dot" id="dotB"></span>
+
+          <!-- LEFT informer -->
+          <div class="slot" id="slotS1">
+            <article class="ad ad--s1" style="--t:0.55s">
+              <div class="ad__scrim"></div>
+              <span class="ad__vs"><span>▲ 1.5× VS AVG</span></span>
+              <div class="ad__foot">
+                <p class="ad__title">Your 3pm is not a personality.</p>
+                <p class="ad__sub">NORVA · supplements</p>
+                <div class="ad__cta"></div>
+              </div>
+              <div class="ad__meta">
+                <div class="ad__spend"><span class="k">SPEND</span><span class="v" data-count="188" data-prefix="$">$188</span></div>
+                <div class="ad__share"><span style="width:30.845px"></span></div>
+                <div class="ad__ctr"><span>3.10% CTR</span><span>1.1K IMPR</span></div>
+                <div class="ad__trend">
+                  <svg class="trend-area" width="107.975" height="7.304" viewBox="0 0 107.975 7.30418" preserveAspectRatio="none"><path d="M0 4.17382L18.0109 3.53867L35.9765 2.90353L53.9874 2.08691L71.9984 1.45176L89.9639 0.816616L107.975 0V7.30418H0V4.17382Z" fill="#E6E3FF" fill-opacity="0.5"/></svg>
+                  <svg class="trend-line" width="108.61" height="4.809" viewBox="0 0 108.61 4.80897" preserveAspectRatio="none" style="left:-0.3175px;top:-0.3176px"><path pathLength="1" d="M0.317577 4.4914L18.3285 3.85625L36.2941 3.2211L54.305 2.40449L72.3159 1.76934L90.2815 1.1342L108.292 0.317579" stroke="#2B363E" stroke-width="0.635146" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="ad__tags"><span style="--j:0">PRICE</span><span style="--j:1">REFRAME</span></div>
+              </div>
+            </article>
+          </div>
+
+          <!-- OUTCOME informer -->
+          <div class="slot" id="slotOut">
+            <article class="outcome" style="--t:0.7s">
+              <p class="outcome__label">Outcome returned</p>
+              <div class="outcome__row">
+                <span class="outcome__big" data-count="85" data-prefix="+" data-suffix="&nbsp;%">+85&nbsp;%</span>
+                <span class="outcome__note">CTR vs contol</span>
+              </div>
+              <div class="outcome__track"><span></span></div>
+            </article>
+          </div>
+
+          <!-- RIGHT (outer) informer — travels counter-clockwise, drags the trail -->
+          <div class="slot" id="slotS2">
+            <article class="ad ad--s2" style="--t:0.45s">
+              <div class="ad__scrim"></div>
+              <div class="ad__foot">
+                <p class="ad__title">We tested it on 1,200 people.</p>
+                <p class="ad__sub">AXEL · wellness</p>
+                <div class="ad__cta"></div>
+              </div>
+              <div class="ad__meta">
+                <div class="ad__spend"><span class="k">SPEND</span><span class="v" data-count="1021" data-prefix="$">$1,021</span></div>
+                <div class="ad__share"><span style="width:100%"></span></div>
+                <div class="ad__ctr"><span>3.78% CTR</span><span>5.0K IMPR</span></div>
+                <div class="ad__trend">
+                  <svg class="trend-area" width="124.55" height="11.408" viewBox="0 0 124.55 11.4083" preserveAspectRatio="none"><path d="M0 9.00106L20.7757 7.79743L41.4991 6.12281L62.2748 5.12851L83.0505 3.24457L103.774 1.51762L124.55 0V11.4083H0V9.00106Z" fill="#E6E3FF" fill-opacity="0.5"/></svg>
+                  <svg class="trend-line" width="125.282" height="9.734" viewBox="0 0 125.282 9.73373" preserveAspectRatio="none" style="left:-0.3663px;top:-0.3663px"><path pathLength="1" d="M0.366333 9.3674L21.142 8.16377L41.8654 6.48915L62.6411 5.49485L83.4168 3.61091L104.14 1.88396L124.916 0.366338" stroke="#161A22" stroke-width="0.732644" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="ad__tags"><span style="--j:0">OBJECTION</span><span style="--j:1">PROOF</span><span style="--j:2">UGC</span></div>
+              </div>
+              <span class="ad__vs"><span>▲ 19.2× VS AVG</span></span>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <script src="script.js?v=21"></script>
+</body>
+</html>
